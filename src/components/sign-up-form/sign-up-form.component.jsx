@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserFromAuth,
@@ -14,7 +14,7 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-const SignUp = () => {
+const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   let { displayName, email, password, confirmPassword } = formFields;
 
@@ -94,4 +94,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpForm;

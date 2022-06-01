@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import SignUp from "../../components/sign-up-form/sign-up-form.component";
+import SignInForm from "../../components/sign-in-form/sign-in-form.component";
+import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 import {
   //   auth,
   createUserFromAuth,
@@ -7,8 +8,9 @@ import {
   //   signInWithGoogleRedirect,
 } from "../../utils/firebase/firebase.utils";
 // import { getRedirectResult } from "firebase/auth";
+import "./authentication.styles.scss";
 
-const SignIn = () => {
+const Authentication = () => {
   //  used with redirection as the after redirection the application looses session.
   // after google authentication , the page is re-rendered and the component is mounted resulting in the useeffect method to be executed.
   // as "auth" is singleton , it holds the state of the previous invocation.
@@ -21,12 +23,12 @@ const SignIn = () => {
   //     }
   //     checkRedirectionResult();
   //   }, []);
-
-  const logInUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    console.log(user);
-    await createUserFromAuth(user);
-  };
+  // moved to Sign in form
+  // const logInUser = async () => {
+  //   const { user } = await signInWithGooglePopup();
+  //   console.log(user);
+  //   await createUserFromAuth(user);
+  // };
 
   //   const logInUserWithRedirect = async () => {
   //     signInWithGoogleRedirect();
@@ -34,9 +36,11 @@ const SignIn = () => {
 
   return (
     <Fragment>
-      <h1>Sign In page</h1>
-      <button onClick={logInUser}>Sign in with google</button>
-      <SignUp />
+      {/* <button onClick={logInUser}>Sign in with google</button> */}
+      <div className="authentication-container">
+        <SignInForm />
+        <SignUpForm />
+      </div>
       <br></br>
       {/* <button onClick={logInUserWithRedirect}>
         Sign in with google Redirect
@@ -45,4 +49,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Authentication;
