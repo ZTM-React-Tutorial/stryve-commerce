@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Button from "../button/button.component";
+import { useContext, useState } from "react";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import {
   signInWithGooglePopup,
@@ -8,6 +8,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import "./sign-in-form.styles.scss";
+// import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -18,9 +19,13 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   let { email, password } = formFields;
 
+  // retrieve "setCurrentUser" property from UserContext.
+  // const { setCurrentUser } = useContext(UserContext);
+  // **** commented above as using observer pattern
+
   const logInUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserFromAuth(user);
+    await signInWithGooglePopup();
+    // await createUserFromAuth(user);
   };
 
   const onChangeHandler = (event) => {
@@ -36,11 +41,14 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassowrd(
-        email,
-        password
-      );
-      console.log(response);
+      //
+      await signInAuthUserWithEmailAndPassowrd(email, password);
+
+      // Sets User to UserContext's setCurrentUser propery..
+      // this inturn updates user.context state resulting in the dependent components to be reloaded.
+      // setCurrentUser(user);
+
+      // console.log(response);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -82,7 +90,11 @@ const SignInForm = () => {
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
           {/* type should be set because by default a button is submit causing alert */}
-          <Button type="button" buttonType="google" onClick={logInUser}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={logInUser}
+          >
             Google Sign In
           </Button>
         </div>

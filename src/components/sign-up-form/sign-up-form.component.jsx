@@ -1,3 +1,6 @@
+// import { useContext, useState } from "react";
+// import { UserContext } from "../../contexts/user.context";
+
 import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
@@ -18,6 +21,8 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   let { displayName, email, password, confirmPassword } = formFields;
 
+  // const { setCurrentUser } = useContext(UserContext);
+
   const onChangeHandler = (event) => {
     let { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -28,6 +33,7 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (event) => {
+    // prevent default form submit behavior and the method below will handle.
     event.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match");
@@ -35,8 +41,12 @@ const SignUpForm = () => {
     }
     try {
       // async function createAuthUser() {
+      // creates a user within firebases AUTH.. username and password are stored within the authentication section.
       let response = await createAuthUserWithEmailAndPassword(email, password);
       if (response) {
+        // commented in lieu of observer patter
+        // setCurrentUser(response.user);
+        // creates user within firestore database (different than firebase auth)
         await createUserFromAuth(response.user, { displayName });
         resetFormFields();
       }
