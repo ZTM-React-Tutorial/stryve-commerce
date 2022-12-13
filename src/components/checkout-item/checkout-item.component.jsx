@@ -1,23 +1,45 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "../button/button.component";
 import "./checkout-item.styles.scss";
+import {
+  addItemToCart,
+  removeItemFromCart,
+  removeProductFromCart,
+} from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CheckoutItem = ({ cartItem }) => {
+  let dispatch = useDispatch();
+  let cartItems = useSelector(selectCartItems);
+
   let { imageUrl, name, quantity, price } = cartItem;
-  let { addItemToCart, removeItemFromCart, removeProductFromCart } =
-    useContext(CartContext);
+  // let { addItemToCart, removeItemFromCart, removeProductFromCart } =
+  //   useContext(CartContext);
+
+  // const incrementItemQuantity = () => {
+  //   addItemToCart(cartItem);
+  // };
+
+  // const decrementItemQuantity = () => {
+  //   removeItemFromCart(cartItem);
+  // };
+
+  // const removeProduct = () => {
+  //   removeProductFromCart(cartItem);
+  // };
 
   const incrementItemQuantity = () => {
-    addItemToCart(cartItem);
+    dispatch(addItemToCart(cartItems, cartItem));
   };
 
   const decrementItemQuantity = () => {
-    removeItemFromCart(cartItem);
+    dispatch(removeItemFromCart(cartItems, cartItem));
   };
 
   const removeProduct = () => {
-    removeProductFromCart(cartItem);
+    dispatch(removeProductFromCart(cartItems, cartItem));
   };
 
   return (

@@ -80,19 +80,33 @@ export const addCollectionAndDocuments = async (
   console.log("done");
 };
 
+// Commented to follow a redux pattern..
+// the reduce should be a part of selector and redux state shoule normally store raw data from api calls.
+// export const getCategoriesAndDocuments = async () => {
+//   const collectionRef = collection(db, "categories");
+//   const q = query(collectionRef);
+
+//   // contains an array of document snapshot.
+//   const querySnapshot = await getDocs(q);
+//   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+//     const { title, items } = docSnapshot.data();
+//     acc[title.toLowerCase()] = items;
+//     return acc;
+//   }, {});
+
+//   return categoryMap;
+// };
+
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
 
   // contains an array of document snapshot.
   const querySnapshot = await getDocs(q);
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-
-  return categoryMap;
+  const categories = querySnapshot.docs.map((docSnapshot) =>
+    docSnapshot.data()
+  );
+  return categories;
 };
 
 export const createUserFromAuth = async (userAuth, additionalInfo) => {

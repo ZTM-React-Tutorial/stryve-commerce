@@ -4,7 +4,9 @@ import { Link, Outlet } from "react-router-dom";
 import CartIconDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import { CartContext } from "../../contexts/cart.context";
-import { UserContext } from "../../contexts/user.context";
+// import { UserContext } from "../../contexts/user.context";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/user/user.selector";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 // commented css in lieu of using styled components
 // import "./navigation.styles.scss";
@@ -15,10 +17,19 @@ import {
   Logo,
   LogoContainer,
 } from "./navigation.styles";
+import { isCartOpen } from "../../store/cart/cart.selector";
 
 const Navigation = () => {
-  // read UserContext from context.
-  const { currentUser } = useContext(UserContext);
+  // read UserContext from context. -- commented in lieu of redux implementation
+  // const { currentUser } = useContext(UserContext);
+
+  // Redux implmentation - useSelector hook to read currentUser from redux state.
+  // As the state updates the component also updates.
+  // console.log("Re-rendering Navingation component");
+  const currentUser = useSelector(selectCurrentUser);
+
+  // console.log("Current User : ", currentUser);
+
   const { cartDisplay } = useContext(CartContext);
 
   // const signOutHandler = async () => {
@@ -75,7 +86,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </NavLinks>
-        {cartDisplay && <CartIconDropdown />}
+        {useSelector(isCartOpen) && <CartIconDropdown />}
       </NavigationContainer>
       {/* Outlet indicates nested components based on the Route definition */}
       <Outlet />
