@@ -1,3 +1,10 @@
+// export const CATEGORIES_ACTION_TYPES = {
+//   SET_CATEGORIES: "categories/SET_CATEGORIES",
+// };
+
+// updated to handle thunk architecture
 export const CATEGORIES_ACTION_TYPES = {
-  SET_CATEGORIES: "categories/SET_CATEGORIES",
+  FETCH_CATEGORIES_START: "categories/FETCH_CATEGORIES_START",
+  FETCH_CATEGORIES_SUCCESS: "categories/FETCH_CATEGORIES_SUCCESS",
+  FETCH_CATEGORIES_FAILED: "categories/FETCH_CATEGORIES_FAILED",
 };

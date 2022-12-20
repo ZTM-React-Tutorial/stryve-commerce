@@ -2,9 +2,13 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import ProductCard from "../product-card/product-card.component";
-import { CategoriesContext } from "../../contexts/categories.context";
+// import { CategoriesContext } from "../../contexts-deprecated/categories.context";
 import { useSelector } from "react-redux";
-import { getCategoriesMap } from "../../store/categories/categories.selector";
+import {
+  getCategoriesMap,
+  isCategoriesLoading,
+} from "../../store/categories/categories.selector";
+import { Spinner } from "../spinner/spinner.component";
 
 import "./category.styles.scss";
 const Category = () => {
@@ -12,6 +16,7 @@ const Category = () => {
   // const { categoriesMap } = useContext(CategoriesContext);
 
   const categoriesMap = useSelector(getCategoriesMap);
+  const isLoading = useSelector(isCategoriesLoading);
 
   //   can be done like below , but the products map will be loaded everytime the component is rendered.
   //   const products = categoriesMap[category];
@@ -26,12 +31,16 @@ const Category = () => {
   return (
     <>
       <h2 className="category-title">{category.toUpperCase()}</h2>
-      <div className="category-container">
-        {products &&
-          products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className="category-container">
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+      )}
     </>
   );
 };

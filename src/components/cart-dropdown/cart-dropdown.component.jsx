@@ -1,7 +1,7 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { CartContext } from "../../contexts/cart.context";
+// import { Link } from "react-router-dom";
+// import { CartContext } from "../../contexts/cart.context";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 import { useSelector } from "react-redux";

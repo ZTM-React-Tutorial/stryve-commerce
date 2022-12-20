@@ -175,7 +175,7 @@ export const CartDisplayProvider = ({ children }) => {
     const newTotalItemInCart = newCartItems.reduce((total, cartItem) => {
       return total + cartItem.quantity;
     }, 0);
-    console.log("newTotalItemInCart : " + newTotalItemInCart);
+    // console.log("newTotalItemInCart : " + newTotalItemInCart);
     dispatch({
       type: CART_CONTEXT_CONSTANTS.SET_CART_ITEM,
       payload: {

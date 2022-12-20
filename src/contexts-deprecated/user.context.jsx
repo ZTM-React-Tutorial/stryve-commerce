@@ -84,7 +84,7 @@ export const UserProvider = ({ children }) => {
   // userReducer -> indicates invoke userReducer function when dispatch function is invoked.
   const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
   const { currentUser } = state;
-  console.log(currentUser);
+  // console.log(currentUser);
   const setCurrentUser = (user) =>
     dispatch({ type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user });
   // all of the above to replase useState.. below remains the same.

@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 // import { ReactComponent as StryveLogo } from "../../assets/StryveLogo.svg";
 import CartIconDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
-import { CartContext } from "../../contexts/cart.context";
+// import { CartContext } from "../../contexts/cart.context";
 // import { UserContext } from "../../contexts/user.context";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
@@ -27,10 +27,11 @@ const Navigation = () => {
   // As the state updates the component also updates.
   // console.log("Re-rendering Navingation component");
   const currentUser = useSelector(selectCurrentUser);
+  const cartDisplay = useSelector(isCartOpen);
 
   // console.log("Current User : ", currentUser);
 
-  const { cartDisplay } = useContext(CartContext);
+  // const { cartDisplay } = useContext(CartContext);
 
   // const signOutHandler = async () => {
   //   const response = await signOutUser();
@@ -86,7 +87,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </NavLinks>
-        {useSelector(isCartOpen) && <CartIconDropdown />}
+        {cartDisplay && <CartIconDropdown />}
       </NavigationContainer>
       {/* Outlet indicates nested components based on the Route definition */}
       <Outlet />

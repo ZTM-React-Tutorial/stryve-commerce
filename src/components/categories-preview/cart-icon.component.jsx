@@ -11,9 +11,9 @@ const CartIcon = () => {
     <div
       className="cart-icon-container"
       onClick={() => {
-        console.log("On CLick", cartDisplay);
+        // console.log("On CLick", cartDisplay);
         const newCartDisplay = !cartDisplay;
-        console.log("newCartDisplay", newCartDisplay);
+        // console.log("newCartDisplay", newCartDisplay);
         setCartDisplay(newCartDisplay);
       }}
     >

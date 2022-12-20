@@ -1,9 +1,13 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import CategoryPreview from "../../components/category-preview/category-preview.component";
-import ProductCard from "../../components/product-card/product-card.component";
-import { CategoriesContext } from "../../contexts/categories.context";
+// import ProductCard from "../../components/product-card/product-card.component";
+// import { CategoriesContext } from "../../contexts-deprecated/categories.context";
 import { useSelector } from "react-redux";
-import { getCategoriesMap } from "../../store/categories/categories.selector";
+import {
+  getCategoriesMap,
+  isCategoriesLoading,
+} from "../../store/categories/categories.selector";
+import { Spinner } from "../spinner/spinner.component";
 
 const CategoriesPreview = () => {
   // comment in lieu of Redux
@@ -11,6 +15,7 @@ const CategoriesPreview = () => {
 
   // Redux selector.
   const categoriesMap = useSelector(getCategoriesMap);
+  const isLoading = useSelector(isCategoriesLoading);
 
   // console.log("Categories Preview : ");
 
@@ -28,15 +33,18 @@ const CategoriesPreview = () => {
     //     </>
     //   ))}
     // </>
-
-    <div>
-      {Object.keys(categoriesMap).map((title) => {
-        const products = categoriesMap[title];
-        return (
-          <CategoryPreview key={title} products={products} title={title} />
-        );
-      })}
-    </div>
+    isLoading ? (
+      <Spinner />
+    ) : (
+      <div>
+        {Object.keys(categoriesMap).map((title) => {
+          const products = categoriesMap[title];
+          return (
+            <CategoryPreview key={title} products={products} title={title} />
+          );
+        })}
+      </div>
+    )
   );
 };
 

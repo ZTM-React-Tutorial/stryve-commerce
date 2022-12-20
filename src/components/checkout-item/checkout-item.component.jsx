@@ -1,14 +1,24 @@
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+// import { useContext } from "react";
+// import { CartContext } from "../../contexts/cart.context";
 import { useSelector, useDispatch } from "react-redux";
-import Button from "../button/button.component";
-import "./checkout-item.styles.scss";
+// import Button from "../button/button.component";
+// import "./checkout-item.styles.scss";
+import "./checkout-item.styles";
 import {
   addItemToCart,
   removeItemFromCart,
   removeProductFromCart,
 } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import {
+  Arrow,
+  BaseSpan,
+  CheckoutItemContainer,
+  ImageContainer,
+  Quantity,
+  RemoveButton,
+  Value,
+} from "./checkout-item.styles";
 
 const CheckoutItem = ({ cartItem }) => {
   let dispatch = useDispatch();
@@ -43,23 +53,19 @@ const CheckoutItem = ({ cartItem }) => {
   };
 
   return (
-    <div className="checkout-item-container">
-      <img className="image-container" src={imageUrl} alt={`${name}`} />
-      <div className="name">{name}</div>
-      <div className="quantity">
-        <div className="arrow" onClick={decrementItemQuantity}>
-          {"<"}
-        </div>
-        <div className="value">{quantity}</div>
-        <div className="arrow" onClick={incrementItemQuantity}>
-          {">"}
-        </div>
-      </div>
-      <div className="price">{price}</div>
-      <Button className="remove" onClick={removeProduct}>
-        X
-      </Button>
-    </div>
+    <CheckoutItemContainer>
+      <ImageContainer>
+        <img src={imageUrl} alt={`${name}`} />
+      </ImageContainer>
+      <BaseSpan>{name}</BaseSpan>
+      <Quantity>
+        <Arrow onClick={decrementItemQuantity}>&#10094;</Arrow>
+        <Value>{quantity}</Value>
+        <Arrow onClick={incrementItemQuantity}>&#10095;</Arrow>
+      </Quantity>
+      <BaseSpan>{price}</BaseSpan>
+      <RemoveButton onClick={removeProduct}>&#10005;</RemoveButton>
+    </CheckoutItemContainer>
   );
 };
 

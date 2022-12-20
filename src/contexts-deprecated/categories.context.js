@@ -23,7 +23,7 @@ export const CategoriesProvider = ({ children }) => {
     // any async call withing use effect needs to be wrapped within an inner function.
     const getCategoriesMap = async () => {
       var categoriesMap = await getCategoriesAndDocuments();
-      console.log("Loaded categories from Database");
+      // console.log("Loaded categories from Database");
       setCategoriesMap(categoriesMap);
     };
     getCategoriesMap();

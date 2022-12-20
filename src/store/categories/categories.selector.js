@@ -33,3 +33,8 @@ export const getCategoriesMap = createSelector(
     }, {});
   }
 );
+
+export const isCategoriesLoading = createSelector(
+  [selectCategoriesReducer],
+  (categoriesReducer) => categoriesReducer.isLoading
+);
