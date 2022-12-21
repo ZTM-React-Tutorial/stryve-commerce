@@ -40,7 +40,7 @@ const PaymentForm = () => {
         // elements hook retrieves the CardElement details and passes it to confirm payment service.
         card: elements.getElement(CardElement),
         billing_details: {
-          name: currentUser,
+          name: currentUser ? currentUser.displayName : "guest",
         },
       },
     });
