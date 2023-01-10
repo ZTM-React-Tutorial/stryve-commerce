@@ -1,0 +1,55 @@
+.footer {
+  padding: 12.8rem 0;
+  border: 1px solid #eee;
+}
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+  /* row-gap: 2rem; */
+}
+
+.logo-container {
+  margin-bottom: 1.2rem;
+}
+
+.logo-container img {
+  height: 4.8rem;
+  width: 18rem;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  opacity: 0.7;
+}
+
+.social-links {
+  display: flex;
+  gap: 2.4rem;
+  list-style: none;
+  padding-left: 1.6rem;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.copyright {
+  margin-top: auto;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: #767676;
+}
+
+.contacts {
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.contacts p {
+  margin-bottom: 1.6rem;
+}
+
+.grid-footer {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}

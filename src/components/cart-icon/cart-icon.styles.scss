@@ -1,21 +1,92 @@
+// .cart-icon-container {
+//   width: 45px;
+//   height: 45px;
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+
+//   .shopping-icon {
+//     width: 24px;
+//     height: 24px;
+//   }
+
+//   .item-count {
+//     position: absolute;
+//     font-size: 10px;
+//     font-weight: bold;
+//     bottom: 12px;
+//   }
+// }
+
+/*
+
+    01. TYPOGRAPHY
+      
+
+      FONT SIZE SYSTEM (px)
+      10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+    02. COLORS
+
+        #2a598c  - Text
+        #2f241b - primary text
+        #f7efeb - background
+        #e67e22 - button
+        Tints:  #f7f0eb , #cf711f #f8d8bd
+        Shades #a15818
+        Accents
+        Greys
+
+    05 SHADOWS
+
+    06 BORDER-RADIUS
+
+
+
+
+
+    07. WHITESPACE
+    SPACING SYSTEM (px)
+      2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+
+      */
+
 .cart-icon-container {
-  width: 45px;
-  height: 45px;
+  width: 4.8rem;
+  height: 4.8rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.5s;
+}
 
-  .shopping-icon {
-    width: 24px;
-    height: 24px;
-  }
+.shopping-icon {
+  width: 3.6rem;
+  height: 3.6rem;
+}
 
-  .item-count {
-    position: absolute;
-    font-size: 10px;
-    font-weight: bold;
-    bottom: 12px;
-  }
+.cart-icon-container:hover .shopping-icon {
+  transform: scale(1.1);
+}
+
+.item-count {
+  position: absolute;
+  font-size: 1.6rem;
+  color: #2f241b;
+  font-weight: 500;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cart-icon-container:hover .item-count {
+  // transform: scale(1.1);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #a15818;
 }

@@ -66,7 +66,7 @@ const App = () => {
     return unSubscribe;
   }, []);
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   return (
     <Routes>

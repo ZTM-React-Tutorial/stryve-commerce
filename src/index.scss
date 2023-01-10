@@ -1,21 +1,84 @@
-body {
-  margin: 0;
-  font-family: "open Sans", "Calligraffitti", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 20px 40px;
-}
+// body {
+//   margin: 0;
+//   font-family: "open Sans", "Calligraffitti", sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   padding: 20px 40px;
+// }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+// code {
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+//     monospace;
+// }
 
-a {
-  text-decoration: none;
-  color: black;
-}
+// a {
+//   text-decoration: none;
+//   color: black;
+// }
 
+// * {
+//   box-sizing: border-box;
+// }
+
+// conscious fashion styles.
 * {
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
+}
+
+html {
+  /* use percentage to handle rem */
+  font-size: 62.5%;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+}
+
+body {
+  font-family: "Open Sans" sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #2f241b;
+}
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  row-gap: 6.4rem;
+  column-gap: 6.4rem;
+}
+
+.grid--center-v {
+  align-items: center;
+}
+
+.grid--2-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-col {
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 6.4rem;
+}
+
+.grid--6-col {
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 6.4rem;
+}
+
+.grid--5-col {
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 6.4rem;
+}
+
+.flex {
+  display: flex;
+  /* row-gap: 9.6rem; */
+  column-gap: 6.4rem;
+  justify-content: center;
 }

@@ -1,0 +1,338 @@
+/* rem and em do not depend on html font sizein media queries. 
+Instead 1rem = 1em = 16px */
+
+/* media query for 84em == 84 *16 = 1344 (below) */
+@media (max-width: 84em) {
+  .hero {
+    max-width: 120rem;
+  }
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .optional-figure {
+    display: block;
+  }
+}
+
+/* below 1200 px */
+@media (max-width: 75em) {
+  /* as all of our desgin was based on html px , it easier to fix fonts by updating the vaue */
+  /* change to 9px from 10 px , 9/16 = 56 */
+  html {
+    font-size: 56.255;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+  }
+
+  .header-container {
+    padding: 0 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+
+  .navigation-list {
+    gap: 3.2rem;
+  }
+
+  .section-testimonials {
+    padding: 3.2rem 3.2rem 9.6rem;
+  }
+
+  .optional-figure {
+    display: block;
+  }
+}
+
+/* below 944 px */
+@media (max-width: 59em) {
+  /* 8px = 8/16 = 0.50 */
+  html {
+    font-size: 50%;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+  .hero-img {
+    width: 60%;
+  }
+
+  .hero-text-box,
+  .hero-img-box {
+    text-align: center;
+  }
+
+  .customer-img-container {
+    justify-content: center;
+    margin-top: 4.4rem;
+  }
+
+  .categories--container-2 {
+    padding: 0 6.4rem;
+  }
+
+  .step-number {
+    font-size: 6.4rem;
+  }
+
+  .section-categories .container .subheading,
+  .section-categories .container .heading-secondary {
+    text-align: center;
+  }
+
+  .category-content {
+    padding: 3.2rem 2.4rem 4.8rem 2.4rem;
+  }
+
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.8rem;
+    /* justify-content: center; */
+  }
+
+  .gallery-figure img {
+    /* width: 80%;
+    height: 80%; */
+    padding: 0.8rem;
+  }
+  .optional-figure {
+    display: block;
+  }
+
+  .button-mobile-nav {
+    display: block;
+    z-index: 1000;
+  }
+
+  .overflow-y-disable {
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
+  .navigation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in;
+    backdrop-filter: blur(10px);
+    --webkkit-backdrop-filter: blur(10px);
+
+    /* move the navigation container to the left */
+    /* in combinatin to overflow-x on the body css 
+    the navigation menu will look invisible */
+    transform: translateX(100%);
+
+    /* display: none does not allow transition */
+
+    /* initially do not display */
+    /* to hide an element */
+    /* 1. make the opactiy to none */
+    opacity: 0;
+
+    /* 2. inaccessible to mouse or keyboard */
+    pointer-events: none;
+
+    /* 3. Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  .nav-open .navigation-container {
+    transform: translateX(0);
+    opacity: 0.9;
+    z-index: 3;
+    pointer-events: auto;
+    visibility: visible;
+    height: 100vh;
+  }
+
+  .icon-mobile-nav[name="menu"] {
+    display: block;
+    /* z-index: 1000; */
+  }
+
+  .nav-open .icon-mobile-nav[name="menu"] {
+    display: none;
+  }
+
+  .nav-open .icon-mobile-nav[name="close"] {
+    display: block;
+    /* z-index: 1000; */
+  }
+
+  .navigation-list {
+    flex-direction: column;
+  }
+
+  .navigation-link:link,
+  .navigation-link:visited {
+    font-size: 3.2rem;
+  }
+}
+
+/* below 704 px */
+@media (max-width: 44em) {
+  .footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+  }
+
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+
+  .category-content {
+    padding: 3.2rem 0.8rem 3.2rem 0.8rem;
+  }
+
+  .category-icon-text {
+    font-size: 1.6rem;
+  }
+
+  .grid--6-col {
+    column-gap: 1.6rem;
+  }
+
+  .category-img-container::after {
+    content: "Shop";
+  }
+}
+
+/* below 544 px */
+@media (max-width: 34em) {
+  .grid--2-col,
+  .grid--3-col,
+  .grid--6-col {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--outline:link,
+  .btn--outline:visited,
+  .btn--outline:hover,
+  .btn--outline:active {
+    margin-top: 2.4rem;
+    display: block;
+  }
+
+  .section-hero {
+    padding: 2.4rem 0 4.8rem 0;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 3.2rem;
+  }
+
+  .hero-img {
+    width: 100%;
+  }
+
+  .step-img-container:nth-child(2) {
+    grid-row: 1;
+    /* grid-column: 1; */
+  }
+
+  .step-img-container:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .heading-secondary {
+    font-size: 3rem;
+    /* margin-bottom: 4.8rem; */
+  }
+
+  .heading-tertiary {
+    font-size: 2rem;
+    /* margin-bottom: 1.2rem; */
+  }
+
+  .grid {
+    row-gap: 3.2rem;
+  }
+
+  .step-number {
+    font-size: 5.2rem;
+  }
+
+  /* .step-description {
+    margin-bottom: 4.8rem;
+  } */
+
+  .step-img-container {
+    transform: translateY(2.4rem);
+  }
+
+  .section-categories {
+    padding: 3.2rem 0 6.4rem 0;
+  }
+
+  .clothing {
+    margin: 0rem;
+  }
+
+  .testimonials-body {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-heading {
+    margin-bottom: 3.2rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-figure img {
+    /* width: 80%;
+    height: 80%; */
+    padding: 0rem;
+  }
+
+  .optional-figure {
+    display: none;
+  }
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-img-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-form-container {
+    padding: 3.2rem 2.4rem 6.4rem;
+  }
+}
