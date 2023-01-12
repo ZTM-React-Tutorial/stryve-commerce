@@ -1,0 +1,43 @@
+.step-img {
+  width: 70%;
+  border-radius: 2%;
+  opacity: 0.9;
+}
+
+.step-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.step-img-container::before,
+.step-img-container::after {
+  content: "";
+  display: block;
+  width: 85%;
+  border-radius: 3%;
+  /* inorder to create a square, height does not work on before component */
+  padding-bottom: 40%;
+  background-color: #fdf2e9;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+.step-img-container::after {
+  width: 75%;
+  border-radius: 3%;
+  /* inorder to create a square, height does not work on before component */
+  padding-bottom: 30%;
+  background-color: #f8d8bd;
+}
+
+.step-img {
+  font-size: 8.6rem;
+  font-weight: 600;
+  color: #ddd;
+}

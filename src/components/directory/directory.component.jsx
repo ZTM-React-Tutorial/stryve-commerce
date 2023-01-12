@@ -1,5 +1,7 @@
 import "./directory.styles.scss";
 import DirectoryItem from "../directory-item/directory-item.component";
+import Hero from "../hero/hero.component";
+import SectionHow from "../section-how/section-how.component";
 
 const categories = [
   {
@@ -34,18 +36,63 @@ const categories = [
   },
 ];
 
+const heroSectionDetails = {
+  headingPrimary: "An Eco-friendly Fashion Wear",
+  heroDesc:
+    "Clothing and accessories that promote and support sustainable and ethical fashion practices. Our fabrics are all organic , handloom , slow-hand-made passionately by local women.",
+  heroBtnTxt: "Wear your value",
+  custImgs: [
+    {
+      src: "img/customers/Customer-01.jpeg",
+      alt: "Customer 01",
+    },
+    {
+      src: "img/customers/Customer-02.jpeg",
+      alt: "Customer 02",
+    },
+    {
+      src: "img/customers/Customer-03.jpeg",
+      alt: "Customer 03",
+    },
+    {
+      src: "img/customers/Customer-04.jpeg",
+      alt: "Customer 04",
+    },
+    {
+      src: "img/customers/Customer-05.jpeg",
+      alt: "Customer 05",
+    },
+    {
+      src: "img/customers/Customer-06.jpeg",
+      alt: "Customer 06",
+    },
+  ],
+  custImgDesc:
+    "Our <span>happy customers</span> are the best proof of the high quality and sustainability of our conscious clothing.",
+  heroImg: {
+    src: "img/HeroImage.jpeg",
+    alt: "Conscious eco-friendly clothing and accessories",
+  },
+};
+
 const Directory = () => {
+  // return (
+  //   <div className="categories-container">
+  //     {categories.map(({ title, id, imageUrl, route }) => (
+  //       <DirectoryItem
+  //         key={id}
+  //         title={title}
+  //         imageUrl={imageUrl}
+  //         route={route}
+  //       />
+  //     ))}
+  //   </div>
+  // );
   return (
-    <div className="categories-container">
-      {categories.map(({ title, id, imageUrl, route }) => (
-        <DirectoryItem
-          key={id}
-          title={title}
-          imageUrl={imageUrl}
-          route={route}
-        />
-      ))}
-    </div>
+    <main>
+      <Hero details={heroSectionDetails} />
+      <SectionHow />
+    </main>
   );
 };
 
